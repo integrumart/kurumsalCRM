@@ -1,0 +1,95 @@
+KURULUM KILAVUZU - Kurumsal CRM Sistemi
+========================================
+
+HIZLI KURULUM ADIMLARI
+-----------------------
+
+1. GEREKSINIMLER
+   - PHP 7.4 veya üzeri
+   - MySQL 5.7+ veya MariaDB 10.3+
+   - Apache veya Nginx web sunucusu
+
+2. DOSYALARI KOPYALAMA
+   Tüm dosyaları web sunucunuzun kök dizinine kopyalayın:
+   - XAMPP: C:\xampp\htdocs\kurumsalCRM\
+   - WAMP: C:\wamp64\www\kurumsalCRM\
+   - Linux: /var/www/html/kurumsalCRM/
+
+3. VERITABANI KURULUMU
+   a) phpMyAdmin'i açın (http://localhost/phpmyadmin)
+   b) "Yeni" butonuna tıklayarak veritabanı oluşturun
+   c) Veritabanı adı: kurumsal_crm
+   d) Karakter seti: utf8mb4_unicode_ci
+   e) SQL sekmesine gidin
+   f) database.sql dosyasının içeriğini kopyalayın ve çalıştırın
+
+4. VERITABANI AYARLARI
+   config.php dosyasını açın ve veritabanı bilgilerinizi girin:
+   
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'root');
+   define('DB_PASS', '');
+   define('DB_NAME', 'kurumsal_crm');
+
+5. ERIŞIM
+   Tarayıcınızdan şu adreslere gidin:
+   - http://localhost/kurumsalCRM/
+   veya
+   - http://localhost/kurumsalCRM/login.php
+
+6. VARSAYILAN GİRİŞ
+   Kullanıcı Adı: admin
+   Şifre: admin123
+
+7. İLK ADIMLAR
+   - İlk giriş sonrası admin şifresini değiştirin
+   - Yeni kullanıcılar ekleyin
+   - Müşteri bilgilerini girmeye başlayın
+
+YAPILANDIRMA
+-------------
+
+Para Birimi Ayarı:
+config.php dosyasında formatCurrency fonksiyonunu düzenleyin.
+
+Tema Renkleri:
+style.css dosyasındaki CSS değişkenlerini değiştirin.
+
+Zaman Dilimi:
+config.php dosyasına ekleyin:
+date_default_timezone_set('Europe/Istanbul');
+
+GÜVENLIK ÖNERİLERİ
+------------------
+
+1. Admin şifresini hemen değiştirin
+2. config.php dosyasının izinlerini 644 yapın
+3. Canlı sunucuda display_errors = Off yapın
+4. SSL sertifikası kullanın (HTTPS)
+5. Düzenli veritabanı yedeği alın
+6. Güvenlik duvarı kurallarını yapılandırın
+
+SORUN GIDERME
+-------------
+
+Veritabanı Bağlantı Hatası:
+- MySQL/MariaDB çalıştığından emin olun
+- config.php bilgilerini kontrol edin
+- Veritabanı kullanıcısının yetkileri olduğundan emin olun
+
+Giriş Yapamıyorum:
+- Şifrenin doğru olduğundan emin olun (admin123)
+- Tarayıcı çerezlerini temizleyin
+- PHP session klasörü yazılabilir mi kontrol edin
+
+Türkçe Karakterler Bozuk:
+- Veritabanı karakter seti utf8mb4 olmalı
+- PHP dosyaları UTF-8 (BOM olmadan) olmalı
+- MySQL bağlantısında charset ayarı yapılmalı
+
+DESTEK
+------
+
+Hata bildirimleri ve öneriler için:
+GitHub Issues: https://github.com/integrumart/kurumsalCRM/issues
+
